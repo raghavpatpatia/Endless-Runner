@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoundarySO: {fileID: 11400000, guid: eccfb624a08bfbb44b6f326aaf0c1833, type: 2}
   PlayerSpeed: 5
-  PlayerJumpForce: 6
+  PlayerJumpForce: 180
   PlayerView: {fileID: 58522670878297904, guid: 051f0553d95654545b6a3ad7c25cb57b,
     type: 3}

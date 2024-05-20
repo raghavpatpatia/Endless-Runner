@@ -4,6 +4,6 @@
 public class GroundSO : ScriptableObject
 {
     public GroundView[] Ground;
-    public int ZPos;
+    public float ZPos;
     public float SpawnTime;
 }

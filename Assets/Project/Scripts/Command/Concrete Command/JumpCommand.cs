@@ -7,9 +7,9 @@ public class JumpCommand : ICommand
     public void Execute() => Jump();
     private void Jump()
     {
-        if (playerController.IsPlayerOnGround() == true)
+        if (playerController.IsOnGround)
         {
-            playerController.SetIsOnGround(false);
+            playerController.IsOnGround = false;
             playerController.PlayerView.RigidBody.AddForce(Vector3.up * playerController.PlayerModel.PlayerJumpForce, ForceMode.Impulse);
         }
     }

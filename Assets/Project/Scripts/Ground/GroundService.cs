@@ -4,9 +4,11 @@ using UnityEngine;
 public class GroundService
 {
     private GroundSO groundSO;
-    private int zPos;
+    private float zPos;
     private GroundPool groundPool;
     private EventService eventService;
+    private float timeBetweenSpwan;
+    private float spawnTime;
 
     public GroundService(GroundSO groundSO, EventService eventService)
     {
@@ -14,14 +16,42 @@ public class GroundService
         this.zPos = groundSO.ZPos;
         this.eventService = eventService;
         groundPool = new GroundPool(groundSO, this, eventService);
+        spawnTime = groundSO.SpawnTime;
+        eventService.IncreaseSpeed.AddListener(IncreaseGroundGenerationSpeed);
     }
 
-    public int GetZPos() => zPos;
+    public float GetZPos() => zPos;
 
-    public void CreateGround()
+    private  void CreateGround()
     {
         GroundController groundController = groundPool.GetGroundObject();
         groundController.ConfigureGroundController(GetZPos());
         zPos += groundSO.ZPos;
+    }
+
+    public void GenerateGround()
+    {
+        if (timeBetweenSpwan <= 0)
+        {
+            CreateGround();
+            timeBetweenSpwan = spawnTime;
+        }
+        else
+        {
+            timeBetweenSpwan -= Time.deltaTime;
+        }
+    }
+
+    private void IncreaseGroundGenerationSpeed(float speed)
+    {
+        if (spawnTime > 0)
+            spawnTime -= speed;
+        else
+            spawnTime = 0;
+    }
+
+    ~GroundService()
+    {
+        eventService.IncreaseSpeed.RemoveListener(IncreaseGroundGenerationSpeed);
     }
 }

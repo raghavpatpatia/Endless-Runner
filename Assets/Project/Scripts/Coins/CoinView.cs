@@ -9,6 +9,7 @@ public class CoinView : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerView>() != null)
         {
+            eventService.OnSoundEffectPlay.Invoke(Sounds.COINCOLLECT);
             gameObject.SetActive(false);
             eventService.OnCoinCollect.Invoke();
         }

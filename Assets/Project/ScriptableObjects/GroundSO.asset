@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GroundSO
   m_EditorClassIdentifier: 
   Ground:
-  - {fileID: 5063658285377906055, guid: fb7e4279bce83aa45baf42ac0dcdfc54, type: 3}
-  - {fileID: 3641631924143690453, guid: 45644bbb661ab0b4995e5213b986711c, type: 3}
-  - {fileID: 641237615875730118, guid: e74e4be0590c8794dbda7ee60558116e, type: 3}
-  ZPos: 50
-  SpawnTime: 8
+  - {fileID: 6167369548882252079, guid: fb7e4279bce83aa45baf42ac0dcdfc54, type: 3}
+  - {fileID: 6479934475289527255, guid: 45644bbb661ab0b4995e5213b986711c, type: 3}
+  - {fileID: 7062465541130685827, guid: 7207ce4e6eb8fb443a0196c378bcbae6, type: 3}
+  ZPos: 30
+  SpawnTime: 6

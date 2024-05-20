@@ -4,56 +4,59 @@ public class PlayerController
 {
     public PlayerModel PlayerModel { get; private set; }
     public PlayerView PlayerView { get; private set; }
-    private CommandInvoker commandInvoker;
+    public CommandInvoker CommandInvoker { get; private set; }
     private Camera camera;
-    private EventService eventService;
-    private bool isOnGround;
+    public EventService EventService { get; private set; }
+    private PlayerStateMachine playerStateMachine;
+    public bool IsOnGround { get; set; }
+    public bool IsPlayerDead { get; set; }
     public PlayerController(PlayerSO playerSO, Vector3 playerSpawnPoint, CommandInvoker commandInvoker, EventService eventService)
     {
-        this.PlayerModel = new PlayerModel(playerSO);
+        this.PlayerModel = new PlayerModel(playerSO, eventService);
         this.PlayerView = GameObject.Instantiate<PlayerView>(playerSO.PlayerView, playerSpawnPoint, Quaternion.identity);
         this.PlayerView.Init(this);
-        this.commandInvoker = commandInvoker;
+        this.CommandInvoker = commandInvoker;
         this.camera = Camera.main;
-        this.eventService = eventService;
-        isOnGround = true;
+        this.EventService = eventService;
+        this.playerStateMachine = new PlayerStateMachine(this);
+        IsOnGround = true;
+        IsPlayerDead = false;
+        ChangeState(States.RUNNING);
+        this.EventService.OnPlayerDead.AddListener(OnPlayerDeath);
     }
 
-    public void Move()
-    {
-        Vector3 movement = Vector3.forward * PlayerModel.PlayerSpeed * Time.deltaTime;
-        PlayerView.transform.position += movement;
-        OnPlayerPassingGround();
-    }
+    public void UpdateState() => playerStateMachine.Update();
 
     public void MoveLeft()
     {
         MoveLeftCommand leftCommand = new MoveLeftCommand(this);
-        commandInvoker.ProcessCommand(leftCommand);
+        CommandInvoker.ProcessCommand(leftCommand);
     }
 
     public void MoveRight()
     {
         MoveRightCommand rightCommand = new MoveRightCommand(this);
-        commandInvoker.ProcessCommand(rightCommand);
+        CommandInvoker.ProcessCommand(rightCommand);
     }
-
-    public void Jump()
-    {
-        JumpCommand jumpCommand = new JumpCommand(this);
-        commandInvoker.ProcessCommand(jumpCommand);
-    }
-
-    public bool IsPlayerOnGround() => isOnGround;
-    public void SetIsOnGround(bool value) => isOnGround = value;
-    private void OnPlayerPassingGround() => eventService.OnPlayerPassingGround.Invoke(PlayerView.transform);
+    public void ChangeState(States state) => playerStateMachine.ChangeState(state);
     public void SetCamera() => camera.transform.SetParent(PlayerView.CameraSpawnPoint);
+
+    private void OnPlayerDeath() => PlayerView.SetColliderHeight(0);
 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<GroundView>() != null)
         {
-            isOnGround = true;
+            IsOnGround = true;
         }
+        else
+        {
+            ChangeState(States.DEAD);
+        }
+    }
+
+    ~PlayerController()
+    {
+        EventService.OnPlayerDead.RemoveListener(OnPlayerDeath);
     }
 }

@@ -5,7 +5,7 @@ public class GroundController
     private GroundView groundView;
     private GroundPool groundObjectPool;
     private EventService eventService;
-    public GroundController(GroundView groundView, int initialPosition, GroundPool groundObjectPool, EventService eventService)
+    public GroundController(GroundView groundView, float initialPosition, GroundPool groundObjectPool, EventService eventService)
     {
         this.groundView = GameObject.Instantiate<GroundView>(groundView, new Vector3(0, 0, initialPosition), groundView.gameObject.transform.rotation);
         this.groundView.Init(this);
@@ -20,7 +20,7 @@ public class GroundController
         eventService.OnPlayerPassingGround.AddListener(ReturnGroundObject);
     }
 
-    public void ConfigureGroundController(int zPos)
+    public void ConfigureGroundController(float zPos)
     {
         groundView.gameObject.SetActive(true);
         groundView.transform.position = new Vector3(0, 0, zPos);
