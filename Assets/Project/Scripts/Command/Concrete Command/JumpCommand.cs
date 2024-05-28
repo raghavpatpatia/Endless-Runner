@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 
-public class JumpCommand : ICommand
+public class JumpCommand : AbstractPlayerCommands
 {
-    private PlayerController playerController;
-    public JumpCommand(PlayerController playerController) => this.playerController = playerController;
-    public void Execute() => Jump();
-    private void Jump()
+    public JumpCommand(PlayerController playerController) : base(playerController) { }
+    public override void Execute() 
     {
         if (playerController.IsOnGround)
         {
             playerController.IsOnGround = false;
             playerController.PlayerView.RigidBody.AddForce(Vector3.up * playerController.PlayerModel.PlayerJumpForce, ForceMode.Impulse);
         }
-    }
+    } 
 }

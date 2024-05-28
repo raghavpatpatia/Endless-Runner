@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 
-public class RunningState : IStates<PlayerController>
+public class RunningState : PlayerAbstractState
 {
-    public PlayerController Controller { get; set; }
-    private GenericStateMachine<PlayerController> stateMachine;
-    public RunningState(GenericStateMachine<PlayerController> stateMachine) => this.stateMachine = stateMachine;
+    public RunningState(GenericStateMachine<PlayerController> stateMachine) : base(stateMachine) { }
 
-    public void OnStateEnter() { }
+    public override void OnStateEnter() { }
 
-    public void OnStateExit() { }
+    public override void OnStateExit() { }
 
-    public void Update() 
+    public override void Update() 
     {
         Move();
     }

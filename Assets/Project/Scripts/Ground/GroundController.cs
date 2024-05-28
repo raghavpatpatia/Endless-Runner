@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class GroundController
+public class GroundController : IDisposable
 {
     private GroundView groundView;
     private GroundPool groundObjectPool;
@@ -58,5 +59,5 @@ public class GroundController
         eventService.OnPlayerPassingGround.RemoveListener(ReturnGroundObject);
     }
 
-    ~GroundController() => UnsubscribeEvents();
+    public void Dispose() => UnsubscribeEvents();
 }

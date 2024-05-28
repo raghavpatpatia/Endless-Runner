@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class SoundController
+public class SoundController : IDisposable
 {
     private SoundView soundView;
     private EventService eventService;
@@ -63,5 +64,8 @@ public class SoundController
         eventService.OnBGMusicVolumeChange.RemoveListener(ChangeBGMusicVolume);
     }
 
-    ~SoundController() => UnsubscribeEvents();
+    public void Dispose()
+    {
+        UnsubscribeEvents();
+    }
 }

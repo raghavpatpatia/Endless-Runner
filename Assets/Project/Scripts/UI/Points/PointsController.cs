@@ -1,6 +1,7 @@
-﻿using Unity.Services.Leaderboards;
+﻿using System;
+using Unity.Services.Leaderboards;
 
-public class PointsController
+public class PointsController : IDisposable
 {
     private int totalPoints;
     private PointsView pointsView;
@@ -30,9 +31,9 @@ public class PointsController
     {
         if (totalPoints % pointsAchievementModel.PointsThreshold == 0)
             eventService.IncreaseSpeed.Invoke(pointsAchievementModel.IncreaseSpeed);
-    } 
+    }
 
-    ~PointsController()
+    public void Dispose()
     {
         eventService.OnCoinCollect.RemoveListener(AddPoints);
         eventService.AddScoresToLeaderboard.RemoveListener(AddTotalScores);

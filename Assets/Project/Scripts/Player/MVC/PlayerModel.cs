@@ -1,4 +1,6 @@
-﻿public class PlayerModel
+﻿using System;
+
+public class PlayerModel : IDisposable
 {
     public float PlayerSpeed { get; private set; }
     public float PlayerJumpForce { get; private set; }
@@ -15,7 +17,7 @@
 
     private void IncreasePlayerSpeed(float speed) => PlayerSpeed += speed;
 
-    ~PlayerModel()
+    public void Dispose()
     {
         eventService.IncreaseSpeed.RemoveListener(IncreasePlayerSpeed);
     }

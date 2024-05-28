@@ -1,6 +1,7 @@
-﻿using Unity.Services.Leaderboards;
+﻿using System;
+using Unity.Services.Leaderboards;
 
-public class LeaderboardController
+public class LeaderboardController : IDisposable
 {
     private LeaderboardView leaderboardView;
     private EventService eventService;
@@ -42,5 +43,6 @@ public class LeaderboardController
     private void AddScores() => eventService.AddScoresToLeaderboard.Invoke(leaderboardID);
 
     private void UnsubscribeEvents() => eventService.OnPlayerDead.RemoveListener(AddScores);
-    ~LeaderboardController() => UnsubscribeEvents();
+
+    public void Dispose() => UnsubscribeEvents();
 }

@@ -66,4 +66,14 @@ public class GameManager : MonoBehaviour
         eventService.OnSoundEffectPlay.Invoke(Sounds.BUTTONCLICK);
         pauseMenuView.gameObject.SetActive(true);
     }
+
+    private void OnDestroy()
+    {
+        soundController.Dispose();
+        groundService.Dispose();
+        playerController.Dispose();
+        gameOverController.Dispose();
+        leaderboardController.Dispose();
+        pointsController.Dispose();
+    }
 }

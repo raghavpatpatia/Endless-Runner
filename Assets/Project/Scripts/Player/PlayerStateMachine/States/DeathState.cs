@@ -1,11 +1,8 @@
-﻿public class DeathState : IStates<PlayerController>
+﻿public class DeathState : PlayerAbstractState
 {
-    public PlayerController Controller { get; set; }
-    private GenericStateMachine<PlayerController> stateMachine;
+    public DeathState(GenericStateMachine<PlayerController> stateMachine) : base(stateMachine) { }
 
-    public DeathState(GenericStateMachine<PlayerController> stateMachine) => this.stateMachine = stateMachine;
-
-    public void OnStateEnter() 
+    public override void OnStateEnter() 
     {
         Controller.IsPlayerDead = true;
         Controller.EventService.OnSoundEffectPlay.Invoke(Sounds.PLAYERDEATH);
@@ -13,7 +10,7 @@
         Controller.EventService.OnPlayerDead.Invoke();
     }
 
-    public void OnStateExit() { }
+    public override void OnStateExit() { }
 
-    public void Update() { }
+    public override void Update() { }
 }

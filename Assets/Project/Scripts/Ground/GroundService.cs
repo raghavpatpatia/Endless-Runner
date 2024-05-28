@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
-public class GroundService
+public class GroundService : IDisposable
 {
     private GroundSO groundSO;
     private float zPos;
@@ -50,8 +51,9 @@ public class GroundService
             spawnTime = 0;
     }
 
-    ~GroundService()
+    public void Dispose()
     {
+        groundPool.DisposeGroundControllers();
         eventService.IncreaseSpeed.RemoveListener(IncreaseGroundGenerationSpeed);
     }
 }

@@ -1,4 +1,6 @@
-﻿public class GameOverController
+﻿using System;
+
+public class GameOverController : IDisposable
 {
     private GameOverView gameOverView;
     private EventService eventService;
@@ -28,5 +30,6 @@
     }
 
     private void UnsubscribeEvents() => eventService.OnPlayerDead.RemoveListener(OnPlayerDeath);
-    ~GameOverController() => UnsubscribeEvents();
+
+    public void Dispose() => UnsubscribeEvents();
 }

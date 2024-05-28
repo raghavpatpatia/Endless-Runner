@@ -62,4 +62,10 @@ public class UIManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    private void OnDestroy()
+    {
+        soundController.Dispose();
+        leaderboardController.Dispose();
+    }
 }
