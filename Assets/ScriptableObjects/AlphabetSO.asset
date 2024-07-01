@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2644d4b7a63f3844ea27114b0427efee, type: 3}
+  m_Name: AlphabetSO
+  m_EditorClassIdentifier: 
+  Alphabets:
+  - AlphabetName: 97
+    AlphabetView: {fileID: 2020696893972849244, guid: 4519b0ee76eaae34faf0c8f8d09c88de,
+      type: 3}
+  - AlphabetName: 98
+    AlphabetView: {fileID: 8444067844601310283, guid: 46f1a108f1dc5df46b035601402562ca,
+      type: 3}
+  - AlphabetName: 99
+    AlphabetView: {fileID: 1651513846394707252, guid: 92a9b6cbe8ea49b4e8cdbab0073d8acd,
+      type: 3}
+  - AlphabetName: 100
+    AlphabetView: {fileID: 1584543249156332254, guid: 735041cff4c6f324c8f88447ed966d5f,
+      type: 3}
+  - AlphabetName: 101
+    AlphabetView: {fileID: 8315955230253364635, guid: bfd520ed07188b74f8709dfbc159c141,
+      type: 3}
+  - AlphabetName: 102
+    AlphabetView: {fileID: 3253412205606044166, guid: b2b0e5ba1baa91549bf03ea68de413a1,
+      type: 3}
+  - AlphabetName: 103
+    AlphabetView: {fileID: 3901355500063945305, guid: 6dcfcd9ed60c7e746b114fe9dc6f6c04,
+      type: 3}
+  - AlphabetName: 104
+    AlphabetView: {fileID: 7291681088234342640, guid: 97f91f1863d9b2945bf1187411885993,
+      type: 3}
+  - AlphabetName: 105
+    AlphabetView: {fileID: 2487792237053276150, guid: 8816c313872fb6e41b0d55229ac4f468,
+      type: 3}
+  - AlphabetName: 106
+    AlphabetView: {fileID: 8713747751595316046, guid: 241af121ff215b540ab3c29b4c404c84,
+      type: 3}
+  - AlphabetName: 107
+    AlphabetView: {fileID: 7790770804481791904, guid: 68824dec5852af24691d9015d193bc3f,
+      type: 3}
+  - AlphabetName: 108
+    AlphabetView: {fileID: 390444616579827255, guid: 15a6f949b4d841548bd3405e49a96b87,
+      type: 3}
+  - AlphabetName: 109
+    AlphabetView: {fileID: 5197164741656841378, guid: 2df6f198d2a46e64d9b93fa1cae9b24f,
+      type: 3}
+  - AlphabetName: 110
+    AlphabetView: {fileID: 2198830769074999729, guid: b6d83cecc1514b747afe713728e88967,
+      type: 3}
+  - AlphabetName: 111
+    AlphabetView: {fileID: 4646213298118393404, guid: 4a75f1f83021ac5479181f0f33c7e4b1,
+      type: 3}
+  - AlphabetName: 112
+    AlphabetView: {fileID: 5449961167118461157, guid: bb4b07ac72ed71c449e9e0e66b5a59e0,
+      type: 3}
+  - AlphabetName: 113
+    AlphabetView: {fileID: 552920408117301349, guid: 26ecb337ce176b942b5ecbc75e74117a,
+      type: 3}
+  - AlphabetName: 114
+    AlphabetView: {fileID: 7094300511073148179, guid: ca0adc03a64cd9745aebee3131afc643,
+      type: 3}
+  - AlphabetName: 115
+    AlphabetView: {fileID: 4339765983540703213, guid: d245699c125966b4d88ca38e01de4a7d,
+      type: 3}
+  - AlphabetName: 116
+    AlphabetView: {fileID: 3720002376126190132, guid: 932eedbaf8178c948872f91729509a6a,
+      type: 3}
+  - AlphabetName: 117
+    AlphabetView: {fileID: 3633585025345997047, guid: d6f5a61f69700be4eadeae560ce988ca,
+      type: 3}
+  - AlphabetName: 118
+    AlphabetView: {fileID: 5769227808187825919, guid: 6f5291b3a4a570e49b9ee613bb389b68,
+      type: 3}
+  - AlphabetName: 119
+    AlphabetView: {fileID: 429860100669558297, guid: f61a7a374e0856a488b3520f713d73b8,
+      type: 3}
+  - AlphabetName: 120
+    AlphabetView: {fileID: 2523168947743971325, guid: 567f79abe0a081441a6d0edfb7c14266,
+      type: 3}
+  - AlphabetName: 121
+    AlphabetView: {fileID: 5101994210031224465, guid: 36d3cf0d0d08a714c87cfb96e3483ecc,
+      type: 3}
+  - AlphabetName: 122
+    AlphabetView: {fileID: 3017372005880657891, guid: c95cd4d1f4abd0a45b5fd974aa0a4e7f,
+      type: 3}
+  AlphabetDestroyTime: 10
